@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <PersonDetails v-if="person" :person="person"/>
-    <p v-else>Person data is not matching the Schema!</p>
+    <p v-else class="msg">Person data is not matching the Schema!</p>
   </div>
 </template>
 
@@ -30,8 +30,8 @@ export default {
     fetchDataFromApi() {
       return {
         name: 'James', 
-        age: 25,
-        siblings: ['Johnnathan'],
+        age: 22,
+        siblings: ['Johnnathan', 'Bjørn'],
         metaData: {},
         active: true,
       }
@@ -65,7 +65,7 @@ export default {
       });
       
       console.log(check);
-      return data;
+      return check ? data : null;
     }
   }
 }
@@ -78,5 +78,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
+}
+.msg {
+  text-align: center;
+  color: red;
+  font-weight: bold;
 }
 </style>
